@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+import org.springframework.cache.annotation.Cacheable;
 
 @Service
 public class RestaurantService {
@@ -29,7 +29,7 @@ public class RestaurantService {
         this.restaurantRepository = restaurantRepository;
     }
 
-
+    @Cacheable("restaurants")
     public List<RestaurantDto> getRestaurants() {
         List<RestaurantEntity> restaurantEntities = restaurantRepository.findAll();
         List<MenuItemEntity> menuItemEntities = menuItemRepository.findAll();
